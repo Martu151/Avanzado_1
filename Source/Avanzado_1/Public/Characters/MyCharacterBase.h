@@ -48,6 +48,7 @@ public:
 	void EndAim();
 	void Shoot();
 	void Reload();
+	void DamagePlayer(int damage);
 
 
 	float GVS;

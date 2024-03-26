@@ -204,3 +204,16 @@ void AMyCharacterBase::Reload()
 	}
 	actualBullets = cartridgeCapacity;
 }
+
+void AMyCharacterBase::DamagePlayer(int damage)
+{
+	characterLife = characterLife - damage;
+
+	if (characterLife <= 0) 
+	{
+		//Game Over
+		Destroy();
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("VIDA: %d"), characterLife);
+}

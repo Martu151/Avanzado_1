@@ -23,6 +23,12 @@ public:
 	UPROPERTY(EditAnywhere) FRotator rotSpeed;
 
 	UPROPERTY(EditAnywhere) int life;
+
+	void NotifyActorBeginOverlap(AActor* OtherActor) override;
+	UPROPERTY(EditAnywhere) int damagePlayer;
+
+	UPROPERTY(EditAnywhere) bool collExplota;
+	UPROPERTY(EditAnywhere) TSubclassOf<AActor> explotionPart;
 	
 public:	
 	// Sets default values for this actor's properties

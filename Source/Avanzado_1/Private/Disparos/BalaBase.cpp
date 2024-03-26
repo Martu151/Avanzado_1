@@ -38,12 +38,11 @@ void ABalaBase::NotifyActorBeginOverlap(AActor* OtherActor)
 	AMyCharacterBase* player = Cast<AMyCharacterBase>(OtherActor);
 	if (player != nullptr)
 	{
-		player->characterLife -= danioBala;
+		player->DamagePlayer(danioBala);
 		/*if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("VIDA: " + player->characterLife));
 		}*/
-		UE_LOG(LogTemp, Warning, TEXT("VIDA: %d"), player->characterLife);
 
 		Destroy();
 	}

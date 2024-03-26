@@ -4,6 +4,7 @@
 #include "Enemigos/EnemigoBase.h"
 #include "TimerManager.h"
 #include "Engine/World.h"
+#include "Characters/MyCharacterbase.h"
 
 // Sets default values
 AEnemigoBase::AEnemigoBase()
@@ -16,7 +17,8 @@ AEnemigoBase::AEnemigoBase()
 // Called when the game starts or when spawned
 void AEnemigoBase::BeginPlay()
 {
-	GetWorldTimerManager().SetTimer(timer, this, &AEnemigoBase::TimerDispara, tiempoEntreSpawn, true);
+	if(balaSpawn != nullptr)
+		GetWorldTimerManager().SetTimer(timer, this, &AEnemigoBase::TimerDispara, tiempoEntreSpawn, true);
 
 	Super::BeginPlay();
 }
@@ -43,6 +45,28 @@ void AEnemigoBase::TakeDamage(int damage)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Destruye Enemigo"));
 		Destroy();
+	}
+}
+
+//Coll
+void AEnemigoBase::NotifyActorBeginOverlap(AActor* OtherActor)
+{
+	if (damagePlayer > 0)
+	{
+		AMyCharacterBase* player = Cast<AMyCharacterBase>(OtherActor);
+		if (player != nullptr)
+		{
+			player->DamagePlayer(damagePlayer);
+
+			if (collExplota) 
+			{
+				if (explotionPart != nullptr)
+				{
+					GetWorld()->SpawnActor<AActor>(explotionPart, GetActorLocation(), GetActorRotation());
+				}
+				Destroy();
+			}
+		}
 	}
 }
 
