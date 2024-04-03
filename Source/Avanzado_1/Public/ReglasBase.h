@@ -17,7 +17,7 @@ class AVANZADO_1_API AReglasBase : public AGameModeBase
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) int vidasRespawn;
-	UPROPERTY(EditAnywhere) int enemigosMatados;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite) int enemigosMatados;
 
 public:
 	AReglasBase();

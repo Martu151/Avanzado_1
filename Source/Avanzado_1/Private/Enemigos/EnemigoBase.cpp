@@ -5,6 +5,7 @@
 #include "TimerManager.h"
 #include "Engine/World.h"
 #include "Characters/MyCharacterbase.h"
+#include "ReglasBase.h"
 
 // Sets default values
 AEnemigoBase::AEnemigoBase()
@@ -17,8 +18,6 @@ AEnemigoBase::AEnemigoBase()
 // Called when the game starts or when spawned
 void AEnemigoBase::BeginPlay()
 {
-	regla = (AReglasBase*)GetWorld()->GetAuthGameMode();
-
 	if(balaSpawn != nullptr)
 		GetWorldTimerManager().SetTimer(timer, this, &AEnemigoBase::TimerDispara, tiempoEntreSpawn, true);
 
@@ -46,6 +45,7 @@ void AEnemigoBase::TakeDamage(int damage)
 	if(life <= 0)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Destruye Enemigo"));
+		AReglasBase*  regla = (AReglasBase*)GetWorld()->GetAuthGameMode();
 		regla->enemigosMatados += 1;
 		Destroy();
 	}
