@@ -14,8 +14,10 @@ class AVANZADO_1_API AReglasBase : public AGameModeBase
 {
 	GENERATED_BODY()
 
+
 public:
-	UPROPERTY(EditAnywhere) int vidasRespawn;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite) int vidasRespawn;
+	UPROPERTY(EditAnywhere) int enemigosMatados;
 
 public:
 	AReglasBase();

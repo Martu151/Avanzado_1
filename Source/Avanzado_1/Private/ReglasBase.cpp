@@ -6,6 +6,7 @@
 AReglasBase::AReglasBase()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	vidasRespawn = 1;
 }
 
 void AReglasBase::Tick(float deltaSeconds)

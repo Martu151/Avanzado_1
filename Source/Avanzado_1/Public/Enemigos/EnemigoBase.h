@@ -29,6 +29,8 @@ public:
 
 	UPROPERTY(EditAnywhere) bool collExplota;
 	UPROPERTY(EditAnywhere) TSubclassOf<AActor> explotionPart;
+
+	AReglasBase* regla;
 	
 public:	
 	// Sets default values for this actor's properties
